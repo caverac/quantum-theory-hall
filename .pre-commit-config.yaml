@@ -9,6 +9,16 @@ repos:
     hooks:
       - id: black
 
+  # mdformat - Markdown formatter
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.21
+    hooks:
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-frontmatter
+          - mdformat-footnote
+
   # Flake8 - Style guide enforcement
   - repo: https://github.com/pycqa/flake8
     rev: 7.3.0
@@ -27,6 +37,15 @@ repos:
         language: system
         types: [python]
         require_serial: false
+
+      - id: affected-tests
+        name: Run affected tests
+        entry: uv run python scripts/run_affected_tests.py
+        language: system
+        types: [python]
+        files: ^(quantum_theory_hall/|tests/unit/)
+        pass_filenames: true
+        require_serial: true
 
   # pydocstyle - Docstring style checker
   - repo: https://github.com/pycqa/pydocstyle

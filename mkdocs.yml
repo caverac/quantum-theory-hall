@@ -1,14 +1,14 @@
-site_name: "Quantum Mechanics for Mathematicians (Hall) Solutions"
-site_description: Solutions to the problem sets from Brian C. Hall's Quantum Mechanics for Mathematicians.
-site_url: https://caverac.github.io/quantum-mechanics-hall/
-repo_url: https://github.com/caverac/quantum-mechanics-hall
-repo_name: caverac/quantum-mechanics-hall
+site_name: "Quantum Theory for Mathematicians (Hall) Solutions"
+site_description: Solutions to the problem sets from Brian C. Hall's Quantum Theory for Mathematicians.
+site_url: https://caverac.github.io/quantum-theory-hall/
+repo_url: https://github.com/caverac/quantum-theory-hall
+repo_name: caverac/quantum-theory-hall
 
 extra:
   version: "0.1.0"
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/caverac/quantum-mechanics-hall
+      link: https://github.com/caverac/quantum-theory-hall
 
 theme:
   name: material

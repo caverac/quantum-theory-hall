@@ -1,7 +1,7 @@
 [project]
-name = "quantum-mechanics-hall"
+name = "quantum-theory-hall"
 version = "0.1.0"
-description = "Solutions to the problem sets from Brian C. Hall's Quantum Mechanics for Mathematicians."
+description = "Solutions to the problem sets from Brian C. Hall's Quantum Theory for Mathematicians."
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }
@@ -29,10 +29,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/caverac/quantum-mechanics-hall"
-Documentation = "https://github.com/caverac/quantum-mechanics-hall"
-Repository = "https://github.com/caverac/quantum-mechanics-hall"
-"Bug Reports" = "https://github.com/caverac/quantum-mechanics-hall/issues"
+Homepage = "https://github.com/caverac/quantum-theory-hall"
+Documentation = "https://github.com/caverac/quantum-theory-hall"
+Repository = "https://github.com/caverac/quantum-theory-hall"
+"Bug Reports" = "https://github.com/caverac/quantum-theory-hall/issues"
 
 [build-system]
 requires = ["hatchling>=1.25"]
@@ -79,6 +79,8 @@ disable = [
     "too-many-arguments",
     "too-many-instance-attributes",
     "too-many-positional-arguments",
+    "too-many-locals",
+    "too-many-statements",
 ]
 
 [tool.pylint.IMPORTS]
@@ -90,7 +92,7 @@ convention = "numpy"
 
 [tool.pytest.ini_options]
 addopts = [
-    "--cov=quantum_mechanics_hall",
+    "--cov=quantum_theory_hall",
     "--cov-report=xml",
     "--cov-report=term-missing",
     "--cov-fail-under=100",
@@ -115,7 +117,7 @@ check_untyped_defs = true
 no_implicit_reexport = true
 
 [tool.coverage.run]
-source = ["quantum_mechanics_hall"]
+source = ["quantum_theory_hall"]
 omit = ["*/tests/*", "*/test_*"]
 
 [tool.coverage.report]

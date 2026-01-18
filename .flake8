@@ -2,7 +2,7 @@
 max-line-length = 120
 extend-ignore = E203, W503
 import-order-style = google
-application-import-names = quantum_mechanics_hall
+application-import-names = quantum_theory_hall
 per-file-ignores =
     __init__.py:F401
     tests/*:D

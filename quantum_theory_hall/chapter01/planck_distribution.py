@@ -100,5 +100,6 @@ def plot_average_energy(path: Path | None = None) -> None:
             facecolor="white",
             edgecolor="none",
         )
+        logger.info("Saved average energy plot to %s", path)
     else:
         plt.show()

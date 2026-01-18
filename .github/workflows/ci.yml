@@ -17,7 +17,7 @@ jobs:
     name: Linters, type-checks, tests
     runs-on: ubuntu-latest
     env:
-      PROJECT_FILES: quantum_mechanics_hall tests
+      PROJECT_FILES: quantum_theory_hall tests
 
     steps:
       - name: Checkout

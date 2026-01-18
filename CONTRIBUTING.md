@@ -1,6 +1,6 @@
 # Contributing to Quantum Mechanics Solutions
 
-Thank you for your interest in contributing to this project! This guide will help you get started with contributing solutions, improvements, and documentation to the Quantum Mechanics for Mathematicians problem set solutions.
+Thank you for your interest in contributing to this project! This guide will help you get started with contributing solutions, improvements, and documentation to the Quantum Theory for Mathematicians problem set solutions.
 
 ## Ways to Contribute
 
@@ -17,23 +17,28 @@ Thank you for your interest in contributing to this project! This guide will hel
 ### 1. Set Up Development Environment
 
 1. **Fork the repository** on GitHub
-2. **Clone your fork** locally:
+
+1. **Clone your fork** locally:
+
    ```bash
-   git clone https://github.com/your-username/quantum-mechanics-hall.git
-   cd quantum-mechanics-hall
+   git clone https://github.com/your-username/quantum-theory-hall.git
+   cd quantum-theory-hall
    ```
 
-3. **Install uv** (if not already installed):
+1. **Install uv** (if not already installed):
+
    ```bash
    curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
-4. **Set up the development environment**:
+1. **Set up the development environment**:
+
    ```bash
    uv sync --all-groups
    ```
 
-5. **Install pre-commit hooks**:
+1. **Install pre-commit hooks**:
+
    ```bash
    uv run pre-commit install
    ```
@@ -55,28 +60,30 @@ git checkout -b docs/improve-explanation
 We maintain high code quality standards:
 
 #### Python Code Style
+
 - **Formatter**: [Black](https://black.readthedocs.io/) (line length: 120)
 - **Linter**: [Flake8](https://flake8.pycqa.org/)
 - **Type Checker**: [MyPy](https://mypy.readthedocs.io/)
 
-
 Run quality checks:
+
 ```bash
 # Format code
-uv run black quantum_mechanics_hall tests
+uv run black quantum_theory_hall tests
 
 # Check formatting
-uv run black --check quantum_mechanics_hall tests
+uv run black --check quantum_theory_hall tests
 
 # Lint code
-uv run flake8 quantum_mechanics_hall
+uv run flake8 quantum_theory_hall
 
 # Type checking
-uv run mypy quantum_mechanics_hall
+uv run mypy quantum_theory_hall
 
 ```
 
 #### Documentation Style
+
 - **Markdown**: Use [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) syntax
 - **Math**: Use LaTeX syntax with custom macros
 - **Figures**: Save as PNG in `docs/assets/` with descriptive names
@@ -148,7 +155,7 @@ Write unit tests for your solution:
 
 import pytest
 import numpy as np
-from quantum_mechanics_hall.chapter0X.problem_xy import solve_problem_xy
+from quantum_theory_hall.chapter0X.problem_xy import solve_problem_xy
 
 
 class TestProblemXY:
@@ -183,6 +190,7 @@ test(chapter1): add tests for Problem 1.1
 ```
 
 **Types:**
+
 - `feat`: New feature or solution
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -200,10 +208,10 @@ test(chapter1): add tests for Problem 1.1
 uv run pytest
 
 # Run tests with coverage
-uv run pytest --cov=quantum_mechanics_hall
+uv run pytest --cov=quantum_theory_hall
 
 # Run specific test file
-uv run pytest tests/unit/quantum_mechanics_hall/chapter01/test_example.py
+uv run pytest tests/unit/quantum_theory_hall/chapter01/test_example.py
 
 # Run with verbose output
 uv run pytest -v
@@ -214,25 +222,29 @@ uv run pytest -v
 ### Before Submitting
 
 1. **Update your branch**:
+
    ```bash
    git fetch upstream
    git rebase upstream/main
    ```
 
-2. **Run all quality checks**:
+1. **Run all quality checks**:
+
    ```bash
-   uv run black quantum_mechanics_hall tests
-   uv run flake8 quantum_mechanics_hall
-   uv run mypy quantum_mechanics_hall
+   uv run black quantum_theory_hall tests
+   uv run flake8 quantum_theory_hall
+   uv run mypy quantum_theory_hall
    uv run pytest
    ```
 
-3. **Update documentation**:
+1. **Update documentation**:
+
    ```bash
    uv run mkdocs build --strict
    ```
 
-4. **Commit your changes**:
+1. **Commit your changes**:
+
    ```bash
    git add .
    git commit -m "feat(chapter1): add solution for Problem 1.5"
@@ -241,11 +253,13 @@ uv run pytest -v
 ### Submitting the PR
 
 1. **Push to your fork**:
+
    ```bash
    git push origin feature/chapter-X-problem-Y
    ```
 
-2. **Create Pull Request** on GitHub with:
+1. **Create Pull Request** on GitHub with:
+
    - Clear title following conventional commits
    - Detailed description of changes
    - Reference to related issues

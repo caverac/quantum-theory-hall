@@ -7,7 +7,7 @@ from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 import numpy as np
 
-from quantum_mechanics_hall.chapter01.planck_distribution import (
+from quantum_theory_hall.chapter01.planck_distribution import (
     average_energy,
     plot_average_energy,
 )
@@ -65,7 +65,7 @@ class TestPlotAverageEnergy:
         """Test that the figure is shown when no path is provided."""
         with (
             patch("matplotlib.pyplot.subplots") as mock_subplots,
-            patch("quantum_mechanics_hall.chapter01.planck_distribution.plt.show") as mock_show,
+            patch("quantum_theory_hall.chapter01.planck_distribution.plt.show") as mock_show,
         ):
             mock_fig = MagicMock(spec=Figure)
             mock_subplots.return_value = (mock_fig, self._create_mock_axes())
