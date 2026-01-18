@@ -9,16 +9,6 @@ repos:
     hooks:
       - id: black
 
-  # mdformat - Markdown formatter
-  - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.21
-    hooks:
-      - id: mdformat
-        additional_dependencies:
-          - mdformat-gfm
-          - mdformat-frontmatter
-          - mdformat-footnote
-
   # Flake8 - Style guide enforcement
   - repo: https://github.com/pycqa/flake8
     rev: 7.3.0
