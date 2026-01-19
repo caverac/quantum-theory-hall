@@ -167,3 +167,243 @@ $$
 *Figure 2.3b: Time it takes for the pendulum to swing from the initial angle $\theta(0) = \pi - \delta$ to the final angle $\theta_0$ as a function of $\delta$. The time diverges logarithmically as $\delta \to 0$. Added $\omega t(\delta)$ for reference.*
 
 Figure 2.3b shows a plot of the time it takes for the pendulum to swing from the initial angle $\theta(0) = \pi - \delta$ to the final angle $\theta_0$ as a function of $\delta$. As expected, the time diverges logarithmically as $\delta \to 0$.
+
+<!-- ======================= -->
+<!-- PROBLEM 2.4             -->
+<!-- ======================= -->
+## Problem 2.4
+
+The time $t(X)$ it takes for the particle to travel from $x_0$ to $X$ is given by
+
+$$
+t(X) = \int_{x_0}^{X} dx \frac{1}{\sqrt{2(E_0 + x^a)}}, \tag{2.3.1}
+$$
+
+where I have assumd $m=1$ and $E$ is
+
+$$
+E = \frac{1}{2}v_0^2 - x_0^a.
+$$
+
+For $a > 0$ and $x \geq x_0$ we have
+
+$$
+E + x^a \geq E + x_0^a = \frac{1}{2}v_0^2  > 0. \tag{2.3.2}
+$$
+
+Now, pick $X$ large enough such that $x^a \geq 2|E|$ for $x \geq X$. That is always possible since $a > 0$  and $E$ is finite. Therefore, for $x \geq X$ we have (Recall $E \geq -|E|$)
+
+$$
+E + x^a \geq x^a - |E| \geq \frac{1}{2} x^a,
+$$
+
+so that
+
+$$
+\frac{1}{\sqrt{2(E + x^a)}} \leq \frac{1}{2\sqrt{x^a}/2} = x^{-a/2}.
+$$
+
+The time it takes to reach infinity can be written as
+
+$$
+\begin{align}
+t_\infty &=
+\int_{x_0}^{X} dx \frac{1}{\sqrt{2(E + x^a)}} + \int_{X}^{\infty} dx \frac{1}{\sqrt{2(E + x^a)}} \\
+&\leq \int_{x_0}^{X} dx \frac{1}{\sqrt{2(E + x^a)}} + \int_{X}^{\infty} dx ~ x^{-a/2}.
+\end{align}
+$$
+
+The first term is finite, so we are only concerned about the second term. The integral converges if and only if $a/2 > 1$, or equivalently if $a > 2$. Thus, the time to reach infinity is finite if and only if $a > 2$.
+
+<!-- ======================= -->
+<!-- PROBLEM 2.5             -->
+<!-- ======================= -->
+## Problem 2.5
+
+Consider solutions of the form $x(t) = e^{\alpha t}$. Plugging into the equation of motion
+
+$$
+m \alpha^2 + \gamma \alpha + k = 0.
+$$
+
+For $k, m$ fixed, the solutions for $\alpha$ are
+
+$$
+2m \alpha = -\gamma \pm \sqrt{\gamma^2 - 4mk} = -\gamma \pm \sqrt{\gamma^2 - \gamma_c^2}, \tag{eqn-2.4.1}
+$$
+
+with $\gamma_c = 2\sqrt{mk}$. For $\gamma < \gamma_c$ the solutions are complex with negative real part, leading to oscillatory motion with exponentially decaying amplitude. For $\gamma > \gamma_c$ there are two distinct real negative solutions, leading to non-oscillatory motion that is a sum of two exponentials with different decay rates.
+
+<!-- ======================= -->
+<!-- PROBLEM 2.6             -->
+<!-- ======================= -->
+## Problem 2.6
+
+### Case 1: Underdamped
+
+For this case $\gamma < \gamma_c$ solutions of Eqn. (2.4.1) are complex, meaning that the solutions $x$(t) are of the form
+
+$$
+x(t) = e^{-\frac{\gamma}{2m}t}\left(A \cos(\omega_d t) + B \sin(\omega_d t)\right),
+$$
+
+therefore,
+
+$$
+r(\gamma) = \frac{\gamma}{2m} ~\quad \gamma < \gamma_c.
+$$
+
+This is a strictly increasing function of $\gamma$, the maximum is reached at $\gamma \to \gamma_c^-$:
+
+### Case 2: Overdamped
+
+For this case $\gamma > \gamma_c$ solutions of Eqn. (2.4.1) are real, and
+
+$$
+x(t) = A e^{\alpha_+ t} + B e^{\alpha_- t},
+$$
+
+with
+
+$$
+r(\gamma) = \min(-\alpha_+, -\alpha_-) = \frac{\gamma - \sqrt{\gamma^2 - \gamma_c^2}}{2m} \quad \gamma > \gamma_c.
+$$
+
+We want to show that this is at most equal to $\gamma_c$, that is
+
+$$
+\gamma - \sqrt{\gamma^2 - \gamma_c^2} \leq \gamma_c,
+$$
+
+or equivalently
+
+$$
+\begin{align}
+\gamma^2 - \gamma_c^2 \geq (\gamma - \gamma_c)^2 &= \gamma^2 - 2\gamma \gamma_c + \gamma_c^2 \\
+\iff -\gamma_c^2 &\geq -2\gamma \gamma_c + \gamma_c^2 \\
+\iff 2\gamma \gamma_c &\geq 2\gamma_c^2 \\
+\iff \gamma &\geq \gamma_c.
+\end{align}
+$$
+
+Hence
+
+$$
+r(\gamma) \leq \frac{\gamma_c}{2m} \quad \gamma > \gamma_c.
+$$
+
+### Case 3: Critically damped
+
+This is one is trivial as $\gamma = \gamma_c$.
+
+<!-- ======================= -->
+<!-- PROBLEM 2.7             -->
+<!-- ======================= -->
+## Problem 2.7
+
+For
+
+$$
+\mathbf{F}(x_1, x_2) = \left( -\frac{x_2}{x_1^2 + x_2^2}, \frac{x_1}{x_1^2 + x_2^2} \right),
+$$
+
+we have
+
+$$
+\begin{align}
+\frac{\partial F_1}{\partial x_2} - \frac{\partial F_2}{\partial x_1} &=
+\frac{- (x_1^2 + x_2^2) + 2x_2^2}{(x_1^2 + x_2^2)^2} - \frac{(x_1^2 + x_2^2) - 2x_1^2}{(x_1^2 + x_2^2)^2} \\
+&= \frac{-2x_1^2 - 2x_2^2 + 2x_2^2 + 2x_1^2}{(x_1^2 + x_2^2)^2} \\
+&= 0.
+\end{align}
+$$
+
+Let's assume now that there exists a potential $V(x_1, x_2)$ such that $\mathbf{F} = -\nabla V$. Then,
+
+$$
+\begin{align}
+\frac{\partial V}{\partial x_1} &= \frac{x_2}{x_1^2 + x_2^2}, \\
+\frac{\partial V}{\partial x_2} &= -\frac{x_1}{x_1^2 + x_2^2}.
+\end{align}
+$$
+
+Integrating the first equation with respect to $x_1$ we have
+
+$$
+V(x_1, x_2) = \int dx_1 \frac{x_2}{x_1^2 + x_2^2} = x_2 \tan^{-1}\left(\frac{x_1}{x_2}\right) + f(x_2),
+$$
+
+where $f(x_2)$ is an arbitrary function of $x_2$. Differentiating with respect to $x_2$ we have
+
+$$
+\frac{\partial V}{\partial x_2} = \tan^{-1}\left(\frac{x_1}{x_2}\right) - \frac{x_1}{x_1^2 + x_2^2} + f'(x_2).
+$$
+
+Setting this equal to the second equation above we have
+
+$$
+\tan^{-1}\left(\frac{x_1}{x_2}\right) - \frac{x_1}{x_1^2 + x_2^2} + f'(x_2) = -\frac{x_1}{x_1^2 + x_2^2},
+$$
+
+or equivalently
+
+$$
+f'(x_2) = -\tan^{-1}\left(\frac{x_1}{x_2}\right).
+$$
+
+This is a contradiction since the left-hand side is only a function of $x_2$ while the right-hand side depends on both $x_1$ and $x_2$. Therefore, there is no potential $V(x_1, x_2)$ such that $\mathbf{F} = -\nabla V$.
+
+<!-- ======================= -->
+<!-- PROBLEM 2.8             -->
+<!-- ======================= -->
+## Problem 2.8
+
+$$
+\begin{align}
+\frac{d}{dt}E(\mathbf{x}, \mathbf{v}) &=
+\frac{d}{dt}\left(\frac{1}{2}m\mathbf{v}^2 + V(\mathbf{x})\right) \\
+&= m\mathbf{v} \cdot \frac{d\mathbf{v}}{dt} + \nabla V(\mathbf{x}) \cdot \mathbf{v} \\
+&= \mathbf{v} \cdot \mathbf{F}(\mathbf{x}, \mathbf{v}) + \nabla V(\mathbf{x}) \\
+&= \mathbf{v} \cdot (-\nabla V(\mathbf{x}) + \mathbf{F}_2(\mathbf{x}, \mathbf{v})) + \nabla V(\mathbf{x}) \cdot \mathbf{v} \\
+&= \mathbf{v} \cdot \mathbf{F}_2(\mathbf{x}, \mathbf{v}) \\
+&= 0.
+\end{align}
+$$
+
+<!-- ======================= -->
+<!-- PROBLEM 2.9             -->
+<!-- ======================= -->
+## Problem 2.9
+
+### Part a
+
+In polar coordinates
+
+$$
+r = \sqrt{x_1^2 + x_2^2}, \quad \theta = \tan^{-1}\left(\frac{x_2}{x_1}\right),
+$$
+
+so that
+
+$$
+\begin{align}
+\frac{\partial \theta}{\partial x_1} = \frac{1}{x_2^2/x_1^2 + 1} \left(-\frac{x_2}{x_1^2}\right) &= -\frac{x_2}{x_1^2 + x_2^2} = -\frac{x_2}{r^2}, \\
+\frac{\partial \theta}{\partial x_2} = \frac{1}{x_2^2/x_1^2 + 1} \left(\frac{1}{x_1}\right) &= \frac{x_1}{x_1^2 + x_2^2} = \frac{x_1}{r^2}.
+\end{align}
+$$
+
+### Part b
+
+$$
+\begin{align}
+\frac{d}{dt}\theta(\mathbf{x}(t)) &= -\frac{x_2}{r^2} \frac{dx_1}{dt} + \frac{x_1}{r^2} \frac{dx_2}{dt} \\
+&= -\frac{x_2}{r^2} v_1 + \frac{x_1}{r^2} v_2 \\
+&= \frac{1}{r^2}(x_1 v_2 - x_2 v_1) \\
+&= \frac{1}{mr^2}J(\mathbf{x}(t), \mathbf{p}(t)).
+\end{align}
+$$
+
+<!-- ======================= -->
+<!-- PROBLEM 2.10            -->
+<!-- ======================= -->
+## Problem 2.10
