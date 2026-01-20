@@ -67,6 +67,7 @@ nav:
       - Problems 1-4: chapter01.1.md
   - Chapter 2 | Classical Mechanics:
       - Problems 1-10: chapter02.1.md
+      - Problems 11-20: chapter02.2.md
   - Changelog: changelog.md
 
 extra_javascript:

@@ -397,8 +397,8 @@ $$
 $$
 \begin{align}
 \frac{d}{dt}\theta(\mathbf{x}(t)) &= -\frac{x_2}{r^2} \frac{dx_1}{dt} + \frac{x_1}{r^2} \frac{dx_2}{dt} \\
-&= -\frac{x_2}{r^2} v_1 + \frac{x_1}{r^2} v_2 \\
-&= \frac{1}{r^2}(x_1 v_2 - x_2 v_1) \\
+&= -\frac{x_2}{mr^2} p_1 + \frac{x_1}{mr^2} p_2 \\
+&= \frac{1}{mr^2}(x_1 p_2 - x_2 p_1) \\
 &= \frac{1}{mr^2}J(\mathbf{x}(t), \mathbf{p}(t)).
 \end{align}
 $$
@@ -407,3 +407,74 @@ $$
 <!-- PROBLEM 2.10            -->
 <!-- ======================= -->
 ## Problem 2.10
+
+### "➡"
+
+We want to show that if the potential $V$ is invariant under rotations, then the angular momentum is conserved.
+
+$$
+\begin{align}
+\frac{d}{dt}J_{jk} &= \sum_{l=1}^N \left( \frac{dx_j^l}{dt} p_k^l + x_j^l \frac{dp_k^l}{dt} - \frac{dx_k^l}{dt} p_j^l - x_k^l \frac{dp_j^l}{dt} \right) \\
+&= \sum_{l=1}^N \left( \frac{p_j^l}{m_l} p_k^l + x_j^l \left(-\frac{\partial V}{\partial x_k^l}\right) - \frac{p_k^l}{m_l} p_j^l - x_k^l \left(-\frac{\partial V}{\partial x_j^l}\right) \right) \\
+&= -\sum_{l=1}^N \left(x_j^l \frac{\partial V}{\partial x_k^l} - x_k^l \frac{\partial V}{\partial x_j^l} \right) \tag{2.10.1}
+\end{align}
+$$
+
+Let $A^{(jk)}$ be the $n \times n$ antisymmetric generator of rotations in the $(j,k)$-plane, that is
+
+$$
+A^{(jk)}_{mn} = \delta_{jm}\delta_{kn} - \delta_{jn}\delta_{km}, \tag{2.10.2}
+$$
+
+and define the rotation matrix
+
+$$
+R(\theta) = \exp(\theta A^{(jk)}),
+$$
+
+and
+
+$$
+F(\theta) = V(R(\theta)\mathbf{x}^1, \ldots, R(\theta)\mathbf{x}^N).
+$$
+
+If $V$ is invariant under rotations, then $F(\theta)$ is constant, and in particular for $\theta = 0$ we have
+
+$$
+\begin{align}
+0 &= F'(0) = \sum_{l=1}^N \frac{\partial V}{\partial \mathbf{x}^l} \cdot \left(\frac{d}{d\theta}R(\theta)\mathbf{x}^l\right)_{\theta=0} \\
+&= \sum_{l=1}^N \sum_{a,b = 1}^n \frac{\partial V}{\partial x_a^l} A^{(jk)}_{ab} x_b^l \\
+&\stackrel{(2.10.2)}{=} \sum_{l=1}^N \sum_{a,b = 1}^n \frac{\partial V}{\partial x_a^l} (\delta_{ja}\delta_{kb} - \delta_{jb}\delta_{ka}) x_b^l \\
+&= \sum_{l=1}^N \left( x_k^l \frac{\partial V}{\partial x_j^l} - x_j^l \frac{\partial V}{\partial x_k^l} \right) \\
+& \stackrel{(2.10.1)}{=} -\frac{d}{dt}J_{jk}.
+\end{align}
+$$
+
+### "⬅"
+
+We want to show that if the angular momentum is conserved, then the potential $V$ is invariant under rotations.
+
+Fix an arbitrary configuration $\mathbf{y}^1, \ldots, \mathbf{y}^N$ and choose the initial state such that
+
+$$
+\mathbf{x}^l(0) = \mathbf{y}^l, \quad p^l(0) = 0, \quad l = 1, \ldots, N.
+$$
+
+Using Eqn. (2.10.1) and taking into account that $dJ_{jk}/dt = 0$, we have
+
+$$
+0 = \left.\frac{dJ_{jk}}{dt}\right|_{t=0} = -\sum_{l=1}^N \left(y_j^l \frac{\partial V(\mathbf{y})}{\partial x_k^l} - y_k^l \frac{\partial V(\mathbf{y})}{\partial x_j^l} \right) \tag{2.10.3}
+$$
+
+for any arbitrary configuration $\mathbf{y}^1, \ldots, \mathbf{y}^N$. This is a pointwise identity of the function $V$, not only valid along trajectories of the system. Using the same notation as before, calculate
+
+$$
+\begin{align}
+F'(\theta) &= \sum_{l=1}^N \frac{\partial}{\partial \mathbf{x}^l} V(R(\theta)\mathbf{y}^1, \ldots, R(\theta)\mathbf{y}^N) \cdot \left(A^{(jk)} R(\theta) \mathbf{y}^l\right) \\
+&= \sum_{l=1}^N \left((R(\theta)\mathbf{y})_j^l \frac{\partial V(R(\theta)\mathbf{y})}{\partial \mathbf{x}_k^l} - (R(\theta)\mathbf{y})_k^l \frac{\partial V(R(\theta)\mathbf{y})}{\partial \mathbf{x}_j^l} \right) \\
+&= \sum_{l=1}^N \left(\mathbf{z}_j^l \frac{\partial V(\mathbf{z})}{\partial \mathbf{x}_k^l} - \mathbf{z}_k^l \frac{\partial V(\mathbf{z})}{\partial \mathbf{x}_j^l} \right), \quad \mathbf{z}^l = R(\theta)\mathbf{y}^l \\
+&\stackrel{(2.10.3)}{=} 0.
+\end{align}
+$$
+
+Where I have used the arbitrariness of the configuration $\mathbf{y}^1, \ldots, \mathbf{y}^N$ in the last step. Therefore, $F(\theta)$ is constant, and $V$ is invariant under rotations.
