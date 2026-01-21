@@ -226,6 +226,57 @@ $$
 $$
 
 <!-- ======================= -->
+<!-- PROBLEM 2.19            -->
+<!-- ======================= -->
+## Problem 2.19
+
+$\mathbf{J} = \mathbf{x} \times \mathbf{p}$, with components $J_i = \epsilon_{ijk} x_j p_k$ and (abusing a bit Einstein summation convention)
+
+$$
+\begin{align}
+\{J_i, J_j\} &= \frac{\partial J_i}{\partial x_a} \frac{\partial J_j}{\partial p_a} - \frac{\partial J_i}{\partial p_a} \frac{\partial J_j}{\partial x_a}  \\
+&= \frac{\partial}{\partial x_a}(\epsilon_{i b c} x_b p_c) \frac{\partial}{\partial p_a}(\epsilon_{j d e} x_d p_e) - \frac{\partial}{\partial p_a}(\epsilon_{i b c} x_b p_c) \frac{\partial}{\partial x_a}(\epsilon_{j d e} x_d p_e) \\
+&= \epsilon_{ibc}\delta_{ab} p_c \epsilon_{jde} x_d \delta_{ae} - \epsilon_{ibc} x_b \delta_{ac} \epsilon_{jde} \delta_{ad} p_e \\
+&= \epsilon_{iac} \epsilon_{jda} x_d p_c - \epsilon_{iba} \epsilon_{j a e} x_b p_e \\
+&= \epsilon_{aci}\epsilon_{ajd} x_d p_c - \epsilon_{aib}\epsilon_{aej} x_b p_e \\
+&= (\delta_{cj}\delta_{id} - \delta_{cd}\delta_{ij}) x_d p_c - (\delta_{bj}\delta_{ie} - \delta_{be}\delta_{ij}) x_b p_e \\
+&= x_i p_j - \delta_{ij} x_k p_k - x_j p_i + \delta_{ij} x_k p_k \\
+&= x_i p_j - x_j p_i
+\end{align}
+$$
+
+<!-- ======================= -->
+<!-- PROBLEM 2.20            -->
+<!-- ======================= -->
+## Problem 2.20
+
+Let's start with the inequality
+
+$$
+|J(\mathbf{x}, \mathbf{p})| = |\mathbf{x} \times \mathbf{p}| \leq |\mathbf{x}| |\mathbf{p}| = r |\mathbf{p}|,
+$$
+
+from which
+
+$$
+|\mathbf{p}| \geq \frac{|J(\mathbf{x}, \mathbf{p})|}{r}.
+$$
+
+And so the energy is
+
+$$
+E(\mathbf{x}, \mathbf{p}) = \frac{|\mathbf{p}|^2}{2m} - \frac{k}{|\mathbf{x}|} \geq \frac{J^2}{2 mr^2} - \frac{k}{r}.
+$$
+
+As $r\to 0$, the term $J^2/(2mr^2)$ dominates, and since it is positive, the energy goes to $+\infty$. Fix $E, J$ and consider the function
+
+$$
+f(r) = \frac{J^2}{2 mr^2} - \frac{k}{r}.
+$$
+
+Since $f(r) \to +\infty$ as $r \to 0$, there exists $\epsilon > 0$ such that $f(r) > E$ for all $r < \epsilon$.
+
+<!-- ======================= -->
 <!-- REFERENCES              -->
 <!-- ======================= -->
 
