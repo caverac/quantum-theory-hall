@@ -14,12 +14,38 @@
     <category field="generic-base"/>
     <updated>2021-01-01T00:00:00+00:00</updated>
   </info>
+  <citation>
+    <sort>
+      <key variable="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <names variable="author">
+          <name form="short" and="symbol" delimiter=", "/>
+        </names>
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </group>
+    </layout>
+  </citation>
   <bibliography>
+    <sort>
+      <key variable="author"/>
+      <key variable="issued"/>
+    </sort>
     <layout>
-      <text variable="author"/>
-      <text variable="title"/>
-      <text variable="container-title"/>
-      <text variable="issued"/>
+      <group delimiter=". ">
+        <names variable="author">
+          <name name-as-sort-order="all" and="symbol" sort-separator=", " delimiter=", " delimiter-precedes-last="always"/>
+        </names>
+        <date variable="issued" prefix="(" suffix=")">
+          <date-part name="year"/>
+        </date>
+        <text variable="title" font-style="italic"/>
+        <text variable="publisher"/>
+      </group>
     </layout>
   </bibliography>
 </style>
