@@ -1,6 +1,5 @@
 """Pendulum sketch for classical mechanics illustrations."""
 
-import logging
 from pathlib import Path
 
 from matplotlib import pyplot as plt
@@ -9,10 +8,11 @@ from matplotlib.figure import Figure
 from matplotlib.patches import Arc, Circle, Wedge
 import numpy as np
 
-logger = logging.getLogger(__name__)
+from quantum_theory_hall.utils.assets import register_asset, save_figure_if_changed
 
 
-def plot_pendulum(path: Path | None = None) -> None:
+@register_asset("pendulum.png")
+def plot_pendulum(*, path: Path | None = None) -> None:
     """
     Plot a pendulum sketch showing angles delta and theta_0.
 
@@ -209,12 +209,13 @@ def plot_pendulum(path: Path | None = None) -> None:
     ax.axis("off")
 
     if path:
-        fig.savefig(
+        save_figure_if_changed(
+            fig,
             path,
             dpi=150,
             facecolor="white",
             edgecolor="none",
         )
-        logger.info("Saved pendulum plot to %s", path)
+        plt.close(fig)
     else:
         plt.show()

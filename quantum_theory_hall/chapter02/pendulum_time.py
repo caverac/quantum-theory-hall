@@ -1,6 +1,5 @@
 """Numerical integration of pendulum swing time."""
 
-import logging
 from pathlib import Path
 
 from matplotlib import pyplot as plt
@@ -9,7 +8,7 @@ from matplotlib.figure import Figure
 import numpy as np
 from scipy import integrate
 
-logger = logging.getLogger(__name__)
+from quantum_theory_hall.utils.assets import register_asset, save_figure_if_changed
 
 
 def omega_t(delta: float, theta_0: float) -> float:
@@ -53,7 +52,8 @@ def omega_t(delta: float, theta_0: float) -> float:
     return result / float(np.sqrt(2))
 
 
-def plot_pendulum_time(path: Path | None = None) -> None:
+@register_asset("pendulum_time.png")
+def plot_pendulum_time(*, path: Path | None = None) -> None:
     """
     Plot omega * t(delta) vs delta for different values of theta_0.
 
@@ -104,13 +104,14 @@ def plot_pendulum_time(path: Path | None = None) -> None:
     ax.legend(loc="upper right", frameon=False)
 
     if path:
-        fig.savefig(
+        save_figure_if_changed(
+            fig,
             path,
             dpi=150,
             bbox_inches="tight",
             facecolor="white",
             edgecolor="none",
         )
-        logger.info("Saved pendulum time plot to %s", path)
+        plt.close(fig)
     else:
         plt.show()

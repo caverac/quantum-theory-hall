@@ -57,7 +57,7 @@ class TestPlotAverageEnergy:
             mock_subplots.return_value = (mock_fig, self._create_mock_axes())
 
             output_path = Path("test_output.png")
-            plot_average_energy(output_path)
+            plot_average_energy(path=output_path)
 
             mock_fig.savefig.assert_called_once()
 

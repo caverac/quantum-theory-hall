@@ -1,30 +1,56 @@
-"""Generate documentation assets (plots and figures)."""
+#!/usr/bin/env python
+# pylint: disable=unused-import
+# flake8: noqa=F401
+"""Generate documentation assets from solution plots.
+
+This script discovers all registered plot functions and generates their
+corresponding figure assets for the documentation.
+
+Usage:
+    uv run python scripts/generate_assets.py
+"""
 
 from pathlib import Path
 
-from quantum_theory_hall.chapter01 import plot_average_energy
-from quantum_theory_hall.chapter02 import (
-    plot_pendulum,
-    plot_pendulum_time,
-    plot_potential_energy,
-)
+# Import chapter modules to trigger decorator registration
+import quantum_theory_hall.chapter01.planck_distribution
+import quantum_theory_hall.chapter02.pendulum
+import quantum_theory_hall.chapter02.pendulum_time
+import quantum_theory_hall.chapter02.potential_energy
+from quantum_theory_hall.utils.assets import get_registered_assets
+
+ASSETS_DIR = Path(__file__).parent.parent / "docs" / "assets" / "generated"
 
 
 def main() -> None:
     """Generate all documentation assets."""
-    # Ensure output directory exists
-    output_dir = Path("docs/assets/generated")
-    output_dir.mkdir(parents=True, exist_ok=True)
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    print(f"Assets directory: {ASSETS_DIR}")
 
-    # Chapter 1
-    plot_average_energy(output_dir / "average_energy.png")
+    assets = get_registered_assets()
+    print(f"Found {len(assets)} registered assets\n")
 
-    # Chapter 2
-    plot_potential_energy(output_dir / "potential_energy.png")
-    plot_pendulum(output_dir / "pendulum.png")
-    plot_pendulum_time(output_dir / "pendulum_time.png")
+    written = 0
+    skipped = 0
 
-    print("Asset generation complete.")
+    for output_name, (plot_func, _) in sorted(assets.items()):
+        output_path = ASSETS_DIR / output_name
+
+        # Check if file exists and get mtime before generation
+        existed = output_path.exists()
+        mtime_before = output_path.stat().st_mtime if existed else None
+
+        plot_func(path=output_path)
+
+        # Check if file was actually written
+        if not existed or output_path.stat().st_mtime != mtime_before:
+            print(f"  [WRITE] {output_name}")
+            written += 1
+        else:
+            print(f"  [SKIP]  {output_name} (unchanged)")
+            skipped += 1
+
+    print(f"\nDone: {written} written, {skipped} unchanged")
 
 
 if __name__ == "__main__":

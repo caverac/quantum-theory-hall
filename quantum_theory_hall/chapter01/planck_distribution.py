@@ -1,6 +1,5 @@
 """Problem 1.2: Planck distribution and average energy of a quantum oscillator."""
 
-import logging
 from pathlib import Path
 
 from matplotlib import pyplot as plt
@@ -9,7 +8,7 @@ from matplotlib.figure import Figure
 import numpy as np
 import numpy.typing as npt
 
-logger = logging.getLogger(__name__)
+from quantum_theory_hall.utils.assets import register_asset, save_figure_if_changed
 
 
 def average_energy(omega: npt.NDArray[np.float64], beta: float, hbar: float = 1.0) -> npt.NDArray[np.float64]:
@@ -38,7 +37,8 @@ def average_energy(omega: npt.NDArray[np.float64], beta: float, hbar: float = 1.
     return np.asarray(result, dtype=np.float64)
 
 
-def plot_average_energy(path: Path | None = None) -> None:
+@register_asset("average_energy.png")
+def plot_average_energy(*, path: Path | None = None) -> None:
     """
     Plot average energy vs frequency for different temperatures.
 
@@ -93,13 +93,14 @@ def plot_average_energy(path: Path | None = None) -> None:
     axs.legend(loc="upper right", frameon=False)
 
     if path:
-        fig.savefig(
+        save_figure_if_changed(
+            fig,
             path,
             dpi=150,
             bbox_inches="tight",
             facecolor="white",
             edgecolor="none",
         )
-        logger.info("Saved average energy plot to %s", path)
+        plt.close(fig)
     else:
         plt.show()

@@ -1,6 +1,5 @@
 """Potential energy illustrations for classical mechanics concepts."""
 
-import logging
 from pathlib import Path
 
 from matplotlib import pyplot as plt
@@ -8,10 +7,11 @@ from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 import numpy as np
 
-logger = logging.getLogger(__name__)
+from quantum_theory_hall.utils.assets import register_asset, save_figure_if_changed
 
 
-def plot_potential_energy(path: Path | None = None) -> None:
+@register_asset("potential_energy.png")
+def plot_potential_energy(*, path: Path | None = None) -> None:
     """
     Plot an arbitrary potential energy V(x) illustrating the classical turning points.
 
@@ -100,12 +100,13 @@ def plot_potential_energy(path: Path | None = None) -> None:
     ax.spines["right"].set_visible(False)
 
     if path:
-        fig.savefig(
+        save_figure_if_changed(
+            fig,
             path,
             dpi=150,
             facecolor="white",
             edgecolor="none",
         )
-        logger.info("Saved potential energy plot to %s", path)
+        plt.close(fig)
     else:
         plt.show()
