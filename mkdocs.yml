@@ -76,6 +76,7 @@ nav:
   - Chapter 3 | Quantum Mechanics:
       - Problems 1-10: chapter03.1.md
   - Chapter 4 | Free Schrödinger Equation:
+      - Convergence to Dirac-delta: chapter04.dirac.md
       - Problems 1-7: chapter04.1.md
   - Changelog: changelog.md
 
