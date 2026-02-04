@@ -119,7 +119,7 @@ That is, $\psi$ satisfies the weak form of the Schrödinger equation.
 <!-- ======================= -->
 <!-- PROBLEM 4.2             -->
 <!-- ======================= -->
-## Problem 4.2
+## Problem 4.2 🌶️
 
 
 ### Part a
@@ -309,10 +309,10 @@ The formula extends to all $a$ with $\Re(a) \geq 0$ and $a \neq 0$.
 
 $$
 \begin{align}
-\frac{1}{2\pi}\int_{-\infty}^\infty dk\, e^{ikx} e^{-i\hbar k^2 t/2m} &= \frac{1}{2\pi} \int_{-\infty}^\infty dk\, e^{- \frac{i\hbar t}{2m} \left( k^2 - \frac{2m x}{\hbar t} k \right)} \\
-&= \frac{1}{2\pi} \int_{-\infty}^\infty dk\, e^{- \frac{i\hbar t}{2m} \left( k - \frac{m x}{\hbar t} \right)^2 + \frac{i m x^2}{2\hbar t}} \\
-&= \frac{1}{2\pi} e^{i m x^2/2\hbar t} \int_{-\infty}^\infty dk\, e^{- \frac{i\hbar t}{2m} \left( k - \frac{m x}{\hbar t} \right)^2 } \\
-&= \frac{1}{2\pi} e^{i m x^2/2\hbar t} \int_{-\infty}^\infty dk'\, e^{- \frac{i\hbar t}{2m} k'^2 } \\
+\frac{1}{2\pi}\int_{-\infty}^\infty dk\, e^{ikx} e^{-i\hbar k^2 t/2m} &= \frac{1}{2\pi} \int_{-\infty}^\infty dk\, \exp\left({- \frac{i\hbar t}{2m} \left( k^2 - \frac{2m x}{\hbar t} k \right)}\right) \\
+&= \frac{1}{2\pi} \int_{-\infty}^\infty dk\, \exp\left({- \frac{i\hbar t}{2m} \left( k - \frac{m x}{\hbar t} \right)^2 + \frac{i m x^2}{2\hbar t}}\right) \\
+&= \frac{1}{2\pi} e^{i m x^2/2\hbar t} \int_{-\infty}^\infty dk\, \exp\left(- \frac{i\hbar t}{2m} \left( k - \frac{m x}{\hbar t} \right)^2 \right) \\
+&= \frac{1}{2\pi} e^{i m x^2/2\hbar t} \int_{-\infty}^\infty dk'\, e^{- i\hbar t k'^2/2m } \\
 &= \frac{1}{2\pi} e^{i m x^2/2\hbar t} \sqrt{2\pi \frac{2m}{i\hbar t}} \\
 &= \sqrt{\frac{m}{2\pi i \hbar t}} e^{i m x^2/2\hbar t}.
 \end{align}
@@ -330,7 +330,7 @@ We need to prove three things
 Since Shcwartz functions are in $L^2(\mathbb{R})$, then
 
 $$
-|(\phi * \psi)(x)| \leq \int_{-\infty}^\infty dy\, |\phi(x - y)| |\psi(y)| \leq \|\phi\|_{L^2} \|\psi\|_{L^2} < \infty,
+|(\phi * \psi)(x)| \leq \int_{-\infty}^\infty dy\, |\phi(x - y)| |\psi(y)| \leq \|\phi\|_2 \|\psi\|_2 < \infty,
 $$
 
 
@@ -359,7 +359,7 @@ $$
 which is integrable since $\psi \in L^2(\mathbb{R})$. More precisely, we use that $\phi' \in L^2$ to get
 
 $$
-\int_{-\infty}^\infty dy\, |\phi'(x - y)| |\psi(y)| \leq \|\phi'\|_{L^2} \|\psi\|_{L^2} < \infty.
+\int_{-\infty}^\infty dy\, |\phi'(x - y)| |\psi(y)| \leq \|\phi'\|_2 \|\psi\|_2 < \infty.
 $$
 
 By the dominated convergence theorem, we can pass the limit inside the integral:
@@ -385,3 +385,204 @@ $$
 Each $\phi^{(n)}$ is Schwartz, hence in $L^2$, so the same argument shows each derivative exists and is continuous.
 
 Therefore $\phi * \psi \in C^\infty(\mathbb{R})$.
+
+<!-- ======================= -->
+<!-- PROBLEM 4.4             -->
+<!-- ======================= -->
+## Problem 4.4
+
+### Part a
+Define
+
+$$
+\hat{\psi}(k, t) = \int_{\mathbb{R}} dx\, e^{-ikx} \psi(x, t).
+$$
+
+Since $\psi(\cdot, t)$ is a "nice" function we can differentiate under the integral sign and any boundary terms vanish. Thus
+
+$$
+\begin{align}
+\frac{\partial \hat{\psi}}{\partial t}(k, t) &= \int_{\mathbb{R}} dx\, e^{-ikx} \frac{\partial \psi}{\partial t}(x, t) \\
+&= \alpha \int_{\mathbb{R}} dx\, e^{-ikx} \frac{\partial^2 \psi}{\partial x^2}(x, t) \\
+&= \alpha \left[ e^{-ikx} \frac{\partial \psi}{\partial x}(x, t) \right]_{x=-\infty}^{x=+\infty} - \alpha \int_{\mathbb{R}} dx\, \frac{\partial}{\partial x} \left( e^{-ikx} \right) \frac{\partial \psi}{\partial x}(x, t) \\
+&= i\alpha k \int_{\mathbb{R}} dx\, e^{-ikx} \frac{\partial \psi}{\partial x}(x, t) \\
+&= i\alpha k \left[ e^{-ikx} \psi(x, t) \right]_{x=-\infty}^{x=+\infty} - i\alpha k \int_{\mathbb{R}} dx\, \frac{\partial}{\partial x} \left( e^{-ikx} \right) \psi(x, t) \\
+&= -\alpha k^2 \int_{\mathbb{R}} dx\, e^{-ikx} \psi(x, t) \\
+&= -\alpha k^2 \hat{\psi}(k, t).
+\end{align}
+$$
+
+This is a first-order ODE in $t$ for each fixed $k$, with solution
+
+$$
+\hat{\psi}(k, t) = \hat{\psi}(k, 0) e^{-\alpha k^2 t} = \hat{\psi}_0(k) e^{-\alpha k^2 t}.
+$$
+
+### Part b
+
+Taking the Fourier inverse
+
+$$
+\begin{align}
+\psi(x,t) &= \frac{1}{2\pi} \int_{\mathbb{R}} dk\, e^{ikx} \hat{\psi}(k,t) = \frac{1}{2\pi} \int_{\mathbb{R}} dk\, e^{ikx} \hat{\psi}_0(k) e^{-\alpha k^2 t} \\
+&= \frac{1}{2\pi} \int_{\mathbb{R}} dk\, e^{ikx} \hat{G}(k, t) \hat{\psi}_0(k) \\
+&= \mathcal{F}^{-1}[\hat{G}(\cdot, t) \hat{\psi}_0](x),
+\end{align}
+$$
+
+Where $\hat{G}(k, t) = e^{-\alpha k^2 t}$ is the Fourier transform of the heat kernel $G(x, t)$
+
+$$
+\begin{align}
+G(x, t) &= \frac{1}{2\pi} \int_{\mathbb{R}} dk\, e^{ikx} e^{-\alpha k^2 t} \\
+&= \frac{1}{2\pi} \int_{\mathbb{R}} dk\, \exp\left(-\alpha t \left( k^2 - \frac{ikx}{\alpha t} \right) \right) \\
+&= \frac{1}{2\pi} \int_{\mathbb{R}} dk\, \exp\left(-\alpha t \left( k - \frac{ix}{2\alpha t} \right)^2 - \frac{x^2}{4\alpha t} \right) \\
+&= \frac{1}{2\pi} e^{-x^2/4\alpha t} \int_{\mathbb{R}} dk\, e^{-\alpha t (k - ix/2\alpha t)^2} \\
+&= \frac{1}{2\pi} e^{-x^2/4\alpha t} \sqrt{\frac{\pi}{\alpha t}} \\
+&= \frac{1}{\sqrt{4\pi \alpha t}} e^{-x^2/4\alpha t}. \qquad t > 0
+\end{align}
+$$
+
+<!-- ======================= -->
+<!-- PROBLEM 4.5             -->
+<!-- ======================= -->
+## Problem 4.5
+
+$$
+Q(x) = \frac{1}{(\theta_0')^2}\left(\frac{1}{A_0} \frac{d^2 A_0}{dx^2}\right) = \left(\frac{\hbar}{Lp_0}\right)^2\left( \frac{(x - x_0)^2}{L^2} - 1 \right).
+$$
+
+Define $\epsilon = \hbar / (L p_0)$, and consider a region where the amplitude is not exponentially small, i.e., $|x - x_0| \leq C L$, for some $C = O(1)$. In that region
+
+$$
+Q(x) \leq \epsilon^2 (C^2 - 1) = O(\epsilon^2) \ll 1.
+$$
+
+That is, in the "bulk" of the wavepacket, the quantity $Q(x)$ is small.
+
+Assume now that $Q(x) \sim 1$, then
+
+$$
+\epsilon^2 \left( \frac{(x - x_0)^2}{L^2} - 1 \right) \sim 1.
+$$
+
+Or equivalently
+
+$$
+\frac{(x - x_0)^2}{L^2} - 1 \sim \frac{1}{\epsilon^2} \implies |x - x_0| \sim L \sqrt{1 + \frac{1}{\epsilon^2}} \sim \frac{L}{\epsilon} = \frac{\hbar}{p_0}.
+$$
+
+In that region
+
+$$
+A_0(x) \sim \exp\left(-\frac{1}{2\epsilon^2}\right) \ll 1,
+$$
+
+which is exponentially small for small $\epsilon$. We thus have
+
+- In the bulk of the wavepacket, $Q(x) \ll 1$.
+- $Q(x) \sim 1$ only in the tails of the wavepacket, where the amplitude is exponentially small.
+
+<!-- ======================= -->
+<!-- PROBLEM 4.6             -->
+<!-- ======================= -->
+## Problem 4.6
+
+
+### Part a
+For a free particle $\psi(x) = \psi_0 \exp(i(kx - \omega(k)t))$ we get from the Klein-Gordon equation
+
+$$
+\left(\frac{1}{c^2}(-\omega(k)^2) - (-k^2) + \frac{m^2 c^2}{\hbar^2}\right) \psi(x) = 0,
+$$
+
+Or equivalently
+
+$$
+\omega(k)^2 = c^2 k^2 + \frac{m^2 c^4}{\hbar^2}.
+$$
+
+Using $E = \hbar \omega$ and $p = \hbar k$ we get the relativistic energy-momentum relation
+
+$$
+E^2 = p^2 c^2 + m^2 c^4.
+$$
+
+### Part b
+
+Clearly
+
+$$
+v_{\mathrm{phase}} = \frac{\omega(k)}{k} = \frac{c}{k} \sqrt{k^2 + \frac{m^2 c^2}{\hbar^2}} = c \sqrt{1 + \frac{m^2 c^2}{\hbar^2 k^2}} > c.
+$$
+
+And
+
+$$
+v_{\mathrm{group}} = \frac{d\omega}{dk} = \frac{c^2 k}{\sqrt{k^2 + m^2 c^2/\hbar^2}} < c.
+$$
+
+Also
+
+$$
+v_{\mathrm{phase}} \cdot v_{\mathrm{group}} = \frac{c\sqrt{k^2 + m^2c^2/\hbar^2}}{k} \cdot \frac{c^2 k}{\sqrt{k^2 + m^2c^2/\hbar^2}} = c^2
+$$
+
+
+<!-- ======================= -->
+<!-- PROBLEM 4.7             -->
+<!-- ======================= -->
+## Problem 4.7
+
+
+For a free particle with $H = P^2/2m$, Ehrenfest's theorem gives
+
+$$
+\frac{d\langle X \rangle}{dt} = \frac{i}{\hbar}\langle [H, X] \rangle = \frac{\langle P \rangle}{m}.
+$$
+
+And
+
+$$
+\begin{align}
+\frac{d\langle X^2 \rangle}{dt} &= \frac{i}{\hbar} \langle[H, X^2]\rangle = \frac{i}{\hbar} \left\langle \left[\frac{P^2}{2m}, X^2\right] \right\rangle \\
+&= \frac{i}{2m\hbar} \langle P[P, X^2] + [P, X^2]P \rangle = \frac{i}{2m\hbar} \langle P(-2i\hbar X) + (-2i\hbar X)P \rangle \\
+&= \frac{1}{m} \langle PX + XP \rangle.
+\end{align}
+$$
+
+Now, since $(\Delta_\psi X)^2 = \langle X^2 \rangle - \langle X \rangle^2$:
+
+$$
+\frac{d(\Delta_\psi X)^2}{dt} = \frac{d\langle X^2 \rangle}{dt} - 2\langle X \rangle \frac{d\langle X \rangle}{dt} = \frac{1}{m}\left(\langle PX + XP \rangle - 2\langle X \rangle \langle P \rangle\right).
+$$
+
+Define centered operators $\tilde{X} = X - \langle X \rangle$ and $\tilde{P} = P - \langle P \rangle$. Then
+
+$$
+\langle PX + XP \rangle - 2\langle X \rangle \langle P \rangle = \langle \tilde{P}\tilde{X} + \tilde{X}\tilde{P} \rangle.
+$$
+
+Therefore
+
+$$
+\frac{d(\Delta_\psi X)}{dt}  = \frac{1}{2\Delta_\psi X} \frac{d(\Delta_\psi X)^2}{dt} = \frac{\langle \tilde{P}\tilde{X} + \tilde{X}\tilde{P} \rangle}{2m \Delta_\psi X}. \tag{4.7.1}
+$$
+
+
+For self-adjoint operators, the Cauchy-Schwarz inequality gives
+
+$$
+|\langle \tilde{P}\tilde{X} \rangle| \leq \langle \tilde{P}^2 \rangle^{1/2}\langle \tilde{X}^2 \rangle^{1/2} = \Delta_\psi P \cdot \Delta_\psi X.
+$$
+
+Similarly $|\langle \tilde{X}\tilde{P} \rangle| \leq \Delta_\psi X \cdot \Delta_\psi P$. Therefore
+
+$$
+|\langle \tilde{P}\tilde{X} + \tilde{X}\tilde{P} \rangle| \leq 2 \Delta_\psi X \cdot \Delta_\psi P.
+$$
+
+Plugging this into Eqn. (4.7.1) we obtain
+
+$$
+\left|\frac{d(\Delta_\psi X)}{dt}\right| = \frac{|\langle \tilde{P}\tilde{X} + \tilde{X}\tilde{P} \rangle|}{2m \Delta_\psi X} \leq \frac{2 \Delta_\psi X \cdot \Delta_\psi P}{2m \Delta_\psi X} = \frac{\Delta_\psi P}{m}.
