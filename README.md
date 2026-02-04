@@ -5,7 +5,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-> **[View the Documentation](https://caverac.github.io/quantum-theory-hall/)**
+<p align="center">
+  <a href="https://caverac.github.io/quantum-theory-hall/">
+    <img src="https://img.shields.io/badge/📖_View_Solutions-Online-4a5568?style=for-the-badge" alt="View Solutions Online">
+  </a>
+</p>
 
 Solutions to the problem sets from Brian C. Hall's *Quantum Theory for Mathematicians*. This repository contains Python implementations of numerical solutions, leveraging libraries such as NumPy, SciPy, and Matplotlib for efficient computation and visualization.
 
